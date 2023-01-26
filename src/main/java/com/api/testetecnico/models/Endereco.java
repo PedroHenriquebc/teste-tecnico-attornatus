@@ -1,6 +1,8 @@
 package com.api.testetecnico.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
@@ -13,19 +15,23 @@ public class Endereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank
+    @Size(max = 100)
     private String logradouro;
 
-    @Column(nullable = false, length = 8)
+    @NotBlank
+    @Size(max = 8)
     private String cep;
 
-    @Column(nullable = false, length = 5)
+    @NotBlank
+    @Size(max = 5)
     private String numero;
 
-    @Column(nullable = false, length = 40)
+    @NotBlank
+    @Size(max = 40)
     private String cidade;
 
-    @Column(nullable = false)
+    @NotBlank
     @Enumerated(EnumType.STRING)
     private TipoEndereco tipo;
 

@@ -1,6 +1,8 @@
 package com.api.testetecnico.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,10 +16,11 @@ public class Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(nullable = false, length = 200)
+    @NotBlank
+    @Size(max = 200)
     private String nome;
 
-    @Column(nullable = false)
+    @NotBlank
     private LocalDate dataNascimento;
 
     public Integer getId() {
