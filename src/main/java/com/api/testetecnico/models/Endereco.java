@@ -2,12 +2,13 @@ package com.api.testetecnico.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "tb_endereço")
+@Table(name = "tb_endereco")
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -31,12 +32,12 @@ public class Endereco implements Serializable {
     @Size(max = 40)
     private String cidade;
 
-    @NotBlank
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TipoEndereco tipo;
 
     @ManyToOne
-    @JoinColumn(name = "id_pessoa")
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
     public Integer getId() {
