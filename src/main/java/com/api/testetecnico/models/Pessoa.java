@@ -1,7 +1,9 @@
 package com.api.testetecnico.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
@@ -20,11 +22,16 @@ public class Pessoa implements Serializable {
     @Size(max = 200)
     private String nome;
 
-    @NotBlank
+    @NotNull
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataNascimento;
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
