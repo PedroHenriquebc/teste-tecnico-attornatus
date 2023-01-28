@@ -17,6 +17,23 @@ public class EnderecoService {
 
     @Transactional
     public Endereco salvar(Endereco endereco) {
+        enderecoRepository.save(endereco);
+        int id = enderecoRepository.save(endereco).getPessoa().getId();
+        int contadorPrincipal = 0;
+        List<Endereco> listaEnderecos = enderecoRepository.findByPessoa_id(id);
+        for (Endereco enderecoAuxiliar : listaEnderecos) {
+            if (enderecoAuxiliar.getTipo() == TipoEndereco.PRINCIPAL) {
+                contadorPrincipal += 1;
+            }
+        }
+        if (contadorPrincipal > 1) {
+            for (Endereco enderecoAuxiliar : listaEnderecos) {
+                if (enderecoAuxiliar.getTipo() == TipoEndereco.PRINCIPAL) {
+                    enderecoAuxiliar.setTipo(TipoEndereco.ALTERNATIVO);
+                    break;
+                }
+            }
+        }
         return enderecoRepository.save(endereco);
     }
 
@@ -25,6 +42,6 @@ public class EnderecoService {
     }
 
     public Endereco consultar(int id) {
-        return enderecoRepository.findByIdAndTipo(id, TipoEndereco.PRINCIPAL);
+        return enderecoRepository.findByPessoa_idAndTipo(id, TipoEndereco.PRINCIPAL);
     }
 }
