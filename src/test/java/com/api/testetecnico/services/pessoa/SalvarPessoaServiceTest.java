@@ -1,15 +1,15 @@
 package com.api.testetecnico.services.pessoa;
 
 import com.api.testetecnico.models.Pessoa;
-import com.api.testetecnico.repositories.PessoaRepository;
 import com.api.testetecnico.services.PessoaService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class SalvarPessoaServiceTest {
@@ -27,6 +27,6 @@ public class SalvarPessoaServiceTest {
 
         Pessoa pessoaSalva = pessoaService.salvar(pessoa);
 
-        Assertions.assertNotNull(pessoaSalva.getId());
+        assertNotNull(pessoaSalva.getId());
     }
 }

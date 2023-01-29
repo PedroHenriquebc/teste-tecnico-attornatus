@@ -1,6 +1,6 @@
 package com.api.testetecnico.services.pessoa;
+
 import com.api.testetecnico.models.Pessoa;
-import com.api.testetecnico.repositories.PessoaRepository;
 import com.api.testetecnico.services.PessoaService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class ExcluirPessoaServiceTest {

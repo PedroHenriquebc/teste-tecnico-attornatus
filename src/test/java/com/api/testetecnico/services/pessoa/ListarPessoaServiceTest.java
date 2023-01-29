@@ -1,7 +1,6 @@
 package com.api.testetecnico.services.pessoa;
 
 import com.api.testetecnico.models.Pessoa;
-import com.api.testetecnico.repositories.PessoaRepository;
 import com.api.testetecnico.services.PessoaService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
