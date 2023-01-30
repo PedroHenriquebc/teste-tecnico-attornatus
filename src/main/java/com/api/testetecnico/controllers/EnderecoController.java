@@ -4,6 +4,8 @@ import com.api.testetecnico.models.Endereco;
 import com.api.testetecnico.models.Pessoa;
 import com.api.testetecnico.services.EnderecoService;
 import com.api.testetecnico.services.PessoaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Tag(name = "Endereço")
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
@@ -24,6 +27,7 @@ public class EnderecoController {
     private PessoaService pessoaService;
 
     @PostMapping("/{id}")
+    @Operation(summary = "Salvar um novo endereço")
     public ResponseEntity<Object> salvarEndereco(@PathVariable(value = "id") int id, @RequestBody @Valid Endereco endereco){
         Optional<Pessoa> pessoaOptional = pessoaService.consultar(id);
         if (pessoaOptional.isEmpty()) {
@@ -34,6 +38,7 @@ public class EnderecoController {
     }
 
     @GetMapping("/pessoa/{id}")
+    @Operation(summary = "Listar os endereços de uma pessoa pelo ID da pessoa")
     public ResponseEntity<Object> listarEnderecoPessoa(@PathVariable(value = "id")int id) {
         Optional<Pessoa> pessoaOptional = pessoaService.consultar(id);
         if (pessoaOptional.isEmpty()) {
@@ -43,6 +48,7 @@ public class EnderecoController {
     }
 
     @GetMapping("/principal/{id}")
+    @Operation(summary = "Consultar o endereço principal de uma pessoa pelo ID da pessoa")
     public ResponseEntity<Object> consultarPrincipal(@PathVariable(value = "id")int id) {
         Optional<Pessoa> pessoaOptional = pessoaService.consultar(id);
         if (pessoaOptional.isEmpty()) {

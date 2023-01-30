@@ -1,5 +1,8 @@
 package com.api.testetecnico.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,30 +17,37 @@ public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Integer id;
 
     @NotBlank
     @Size(max = 100)
+    @Schema(example = "Rua Alfabeto")
     private String logradouro;
 
     @NotBlank
     @Size(max = 8)
+    @Schema(example = "11122233")
     private String cep;
 
     @NotBlank
     @Size(max = 5)
+    @Schema(example = "35")
     private String numero;
 
     @NotBlank
     @Size(max = 40)
+    @Schema(example = "Cidade Grande")
     private String cidade;
 
     @NotNull
     @Enumerated(EnumType.STRING)
+    @Schema(example = "PRINCIPAL")
     private TipoEndereco tipo;
 
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
+    @Hidden
     private Pessoa pessoa;
 
     public Integer getId() {

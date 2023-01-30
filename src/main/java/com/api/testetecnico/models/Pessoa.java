@@ -1,6 +1,8 @@
 package com.api.testetecnico.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,14 +18,15 @@ public class Pessoa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Integer id;
 
     @NotBlank
     @Size(max = 200)
+    @Schema(example = "Peter Parker")
     private String nome;
 
     @NotNull
-    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataNascimento;
 
     public Integer getId() {
