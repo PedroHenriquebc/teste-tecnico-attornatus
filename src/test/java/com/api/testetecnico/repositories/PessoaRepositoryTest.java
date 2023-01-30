@@ -61,7 +61,7 @@ public class PessoaRepositoryTest {
 
         this.pessoaRepository.delete(pessoaSalva);
 
-        assertEquals(Optional.empty(), (this.pessoaRepository.findById(pessoaSalva.getId())));
+        assertEquals(Optional.empty(), this.pessoaRepository.findById(pessoaSalva.getId()));
     }
 
     @Test

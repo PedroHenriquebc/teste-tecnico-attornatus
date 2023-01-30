@@ -49,7 +49,7 @@ public class EnderecoController {
 
     @GetMapping("/principal/{id}")
     @Operation(summary = "Consultar o endereço principal de uma pessoa pelo ID da pessoa")
-    public ResponseEntity<Object> consultarPrincipal(@PathVariable(value = "id")int id) {
+    public ResponseEntity<Object> consultarEnderecoPrincipal(@PathVariable(value = "id")int id) {
         Optional<Pessoa> pessoaOptional = pessoaService.consultar(id);
         if (pessoaOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada.");
