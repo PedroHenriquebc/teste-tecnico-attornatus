@@ -16,6 +16,7 @@
 * Testes <br>
 
 ## 🧾 Documentação com Swagger
+![screenshot swagger](https://github.com/PedroHenriquebc/teste-tecnico-attornatus/blob/main/src/main/resources/swagger.png?raw=true)
 <br>🔗 Você poderá acessar as requisições da API por <a href="https://localhost:8080/swagger-ui/index.html">aqui!</a> ao subir a aplicação. (localhost:8080/swagger-ui/index.html)
 
 ## 🧪 Tecnologias utilizadas
